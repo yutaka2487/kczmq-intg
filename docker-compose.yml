@@ -11,7 +11,8 @@ services:
     volumes:
       - ./api_server:/workdir
     ports:
-      - 8888:8888
+      - 8000:8000
+    entrypoint: "uvicorn main:app --host 0.0.0.0 --reload"
 
   api_client:
     container_name: "api_client"
@@ -19,7 +20,7 @@ services:
     volumes:
       - ./api_client:/workdir
     ports:
-      - 8889:8888
+      - 8888:8888
 
   mysql:
     image: mysql:5.7
