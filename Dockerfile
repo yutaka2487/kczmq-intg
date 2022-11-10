@@ -1,7 +1,7 @@
 FROM condaforge/miniforge3
 
 RUN conda install --yes --freeze-installed \
-    jupyterlab ipython numpy pandas fastapi flask python-keycloak &&\
+    jupyterlab ipython numpy pandas fastapi flask python-keycloak uvicorn[standard] gunicorn &&\
     pip install tiledb pyzmq &&\
     conda clean -all -y -f &&\
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
